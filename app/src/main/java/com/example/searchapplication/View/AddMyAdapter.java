@@ -1,8 +1,6 @@
 package com.example.searchapplication.View;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
@@ -16,19 +14,17 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.searchapplication.Model.SearchInfo;
 import com.example.searchapplication.R;
-import com.example.searchapplication.util.PreferenceUtil;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class ThumbnailAdapter extends RecyclerView.Adapter<ThumbnailAdapter.ItemViewHolder> {
+public class AddMyAdapter extends RecyclerView.Adapter<AddMyAdapter.ItemViewHolder> {
 
     Context context;
     ArrayList<SearchInfo> mItems;
 
-    public ThumbnailAdapter(FragmentActivity activity, ArrayList<SearchInfo> bucketItems) {
+    public AddMyAdapter(FragmentActivity activity, ArrayList<SearchInfo> addItems) {
         this.context = activity;
-        mItems = bucketItems;
+        mItems = addItems;
     }
 
     // 새로운 뷰 홀더 생성
@@ -40,19 +36,12 @@ public class ThumbnailAdapter extends RecyclerView.Adapter<ThumbnailAdapter.Item
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ItemViewHolder itemViewHolder, final int position) {
+    public void onBindViewHolder(@NonNull ItemViewHolder itemViewHolder, int position) {
         itemViewHolder.mNameTv.setText(mItems.get(position).getDatetime());
         itemViewHolder.mNameTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "내보관함에 추가되었습니다.", Toast.LENGTH_SHORT).show();
-                MyFragment.newInstance(mItems.get(position).getDatetime()
-                        , mItems.get(position).getThumbnail_url() != null
-                                ? mItems.get(position).getThumbnail_url() : mItems.get(position).getThumbnail());
-
-                PreferenceUtil.setArgDate(context, mItems.get(position).getDatetime());
-                PreferenceUtil.setArgThumbnailImg(context, mItems.get(position).getThumbnail_url() != null
-                        ? mItems.get(position).getThumbnail_url() : mItems.get(position).getThumbnail());
+                Toast.makeText(context, "눌렀구나~~", Toast.LENGTH_SHORT).show();
             }
         });
         if (mItems.get(position).getThumbnail_url() != null) {

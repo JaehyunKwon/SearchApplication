@@ -2,7 +2,7 @@ package com.example.searchapplication.Model;
 
 import java.io.Serializable;
 
-public class SearchVO implements Serializable {
+public class SearchInfo implements Serializable {
 
     private String collection;
     private String thumbnail_url;
